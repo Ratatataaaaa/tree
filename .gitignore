@@ -1,0 +1,9 @@
+test
+testtt
+tree
+.vscode/launch.json
+.vscode/tasks.json
+tree.dSYM/Contents/Info.plist
+tree.dSYM/Contents/Resources/DWARF/tree
+.vscode/settings.json
+*.o
