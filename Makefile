@@ -10,21 +10,21 @@ RESET = \033[0m
 all: $(NAME)
 
 %.o: %.c
-	@printf "$(RED)[ft_ls] Compiling [...]\r"
+	@printf "$(RED)[tree] Compiling [...]\r"
 	@gcc $(FLAGS) -c $< -o $@
-	@printf "$(GREEN)[ft_ls] Compiling [!!!]\r$(RESET)"
+	@printf "$(GREEN)[tree] Compiling [!!!]\r$(RESET)"
 
 $(NAME): $(OBG)
 	@gcc $(FLAGS) $(OBG) -o $(NAME)
-	@printf "$(GREEN)[ft_ls] Compiled successfuly! [OK]$(RESET)\n"
+	@printf "$(GREEN)[tree] Compiled successfuly! [OK]$(RESET)\n"
 
 clean:
 	@/bin/rm -f $(OBG)
-	@printf "$(RED)[ft_ls] Removed object files!$(RESET)\n"
+	@printf "$(RED)[tree] Removed object files!$(RESET)\n"
 
 fclean: clean
 	@rm -f $(NAME)
-	@printf "$(RED)[ft_ls] Deleted successfuly! [OK]\n$(RESET)"
+	@printf "$(RED)[tree] Deleted successfuly! [OK]\n$(RESET)"
 
 re: fclean all
 
