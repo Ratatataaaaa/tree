@@ -14,6 +14,7 @@ typedef struct		s_tree
 #define STD_T		"\x1b[0m"
 #define RANDOM		(rand() * time(NULL)) % 1000
 
+//Add empty linr to struct->line
 char				*add_line(int count)
 {
 	char			*line;
@@ -27,7 +28,7 @@ char				*add_line(int count)
 	}
 	return (line);
 }
-
+//Add empty level to tree
 t_tree				*add_lv(int count)
 {
 	t_tree			*new_lv;
@@ -45,7 +46,7 @@ t_tree				*add_lv(int count)
 	}
 	return (new_lv);
 }
-
+//Add new lavel to front of the list
 void				push_front(t_tree **head, t_tree *new_lv)
 {
 	if ((*head) == NULL)
@@ -56,7 +57,7 @@ void				push_front(t_tree **head, t_tree *new_lv)
 		*head = new_lv;
 	}
 }
-
+//Clean tree
 void				free_tree(t_tree **head)
 {
 	t_tree			*to_del;
@@ -74,7 +75,7 @@ void				free_tree(t_tree **head)
 		head = NULL;
 	}
 }
-
+//Init empty map for tree
 t_tree				*init_tree(int lv)
 {
 	t_tree			*head;
@@ -94,7 +95,7 @@ t_tree				*init_tree(int lv)
 	}
 	return (head);
 }
-
+//Print map
 void				print_tree(t_tree *tree)
 {
 	t_tree			*temp;
@@ -106,9 +107,7 @@ void				print_tree(t_tree *tree)
 		temp = temp->next;
 	}
 }
-
-
-
+//Add branch to tree
 void				add_branch(t_tree *find, t_tree *to_add)
 {
 	unsigned int	i;
@@ -118,7 +117,7 @@ void				add_branch(t_tree *find, t_tree *to_add)
 	{
 		if (find->line[i] != ' ' && find->line[i] != '*')
 		{
-			if (RANDOM > 600)
+			if (RANDOM > 700)
 				to_add->line[i - 1] = '\\';
 			else if (RANDOM < 300)
 				to_add->line[i + 1] = '/';
@@ -128,7 +127,7 @@ void				add_branch(t_tree *find, t_tree *to_add)
 		i++;
 	}
 }
-
+//Add foliage to end in branches
 void				add_foliage(t_tree *find, t_tree *to_add)
 {
 	unsigned int	i;
@@ -148,14 +147,18 @@ void				add_foliage(t_tree *find, t_tree *to_add)
 		i++;
 	}
 }
-
+//Add tree to map
 void				add_tree(t_tree *tree, int lv)
 {
+	int				center;
+
+
 	tree->line[--lv] = '|';
+	center = lv / 2;
 	while(tree->next)
 	{
 		add_branch(tree, tree->next);
-		if (lv % 2)
+		if (lv > center)
 			add_branch(tree, tree->next);
 		add_foliage(tree, tree->next);
 		lv--;
@@ -163,7 +166,7 @@ void				add_tree(t_tree *tree, int lv)
 	}
 	add_foliage(tree, tree->next);
 }
-
+//Revers sort list
 void				sort_d_rev(t_tree **head)
 {
 	t_tree			*temp_a;
